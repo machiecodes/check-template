@@ -4,7 +4,7 @@ import * as fs from "fs";
 import * as path from "path";
 
 const token = process.env.GITHUB_TOKEN;
-const message = core.getInput('close-message');
+let message = core.getInput('close-message');
 const label = core.getInput('close-label');
 
 const context = github.context;
@@ -52,10 +52,7 @@ async function closeIssue() {
     const owner = context.repo.owner;
     const repo = context.repo.repo;
 
-    const closeMessage = message
-        ? Function(...Object.keys(context.payload), `return \`${message}\``)(...Object.values(context.payload))
-        : '### This issue is being automatically closed.\n' +
-        'Please reopen your issue following one of the templates.';
+    message = Function(...Object.keys(context.payload), `return \`${message}\``)(...Object.values(context.payload))
 
     try {
         await octokit.rest.issues.createComment({

@@ -36311,7 +36311,7 @@ function getIDToken(aud) {
 
 
 const token = process.env.GITHUB_TOKEN;
-const message = getInput('close-message');
+let message = getInput('close-message');
 const label = getInput('close-label');
 
 const src_context = github_context;
@@ -36359,10 +36359,7 @@ async function closeIssue() {
     const owner = src_context.repo.owner;
     const repo = src_context.repo.repo;
 
-    const closeMessage = message
-        ? Function(...Object.keys(src_context.payload), `return \`${message}\``)(...Object.values(src_context.payload))
-        : '### This issue is being automatically closed.\n' +
-        'Please reopen your issue following one of the templates.';
+    message = Function(...Object.keys(src_context.payload), `return \`${message}\``)(...Object.values(src_context.payload))
 
     try {
         await octokit.rest.issues.createComment({

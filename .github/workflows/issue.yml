@@ -22,6 +22,3 @@ jobs:
         uses: ./
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          close-message: "@${issue.user.login} ${repository.full_name}"
-          close-label: "invalid"

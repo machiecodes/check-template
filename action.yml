@@ -10,6 +10,7 @@ inputs:
   close-message:
     description: The message to post when closing an issue.
     required: false
+    default: "### This issue is being automatically closed.\nPlease reopen your issue following one of the templates."
   close-label:
     description: The label to apply when closing an issue.
     required: false
