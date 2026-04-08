@@ -1,6 +1,6 @@
 name: "Check Template"
 description: "Automatically close issues that don't follow any defined templates."
-author: "MachieCodes"
+author: "machiecodes"
 
 branding:
   icon: "archive"
