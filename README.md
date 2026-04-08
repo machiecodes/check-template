@@ -26,7 +26,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Check Template
-        uses: machiecodes/check-template@v1
+        uses: machiecodes/check-template@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -36,8 +36,6 @@ jobs:
 
 Both inputs are optional. If `close-message` is omitted a default message is posted; if `close-label` is omitted no 
 label is applied.
-
-### Message Formatting
 
 You can use JavaScript template syntax in `close-message` to reference issue data; the message is evaluated against the
 GitHub [webhook payload](https://docs.github.com/en/webhooks/webhook-events-and-payloads#issues). For example, you can 
