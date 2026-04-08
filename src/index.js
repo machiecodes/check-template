@@ -56,7 +56,7 @@ async function closeIssue() {
 
     try {
         await octokit.rest.issues.createComment({
-            owner, repo, issue_number: issueNumber, body: closeMessage
+            owner, repo, issue_number: issueNumber, body: message
         });
     } catch (error) {
         core.error(`Failed to add comment: ${error.message}`);
