@@ -1,7 +1,7 @@
 {
   "name": "check-template",
   "version": "1.0.0",
-  "description": "Github Plugin to close issues that don't follow any defined templates.",
+  "description": "Action to close issues that don't follow any defined templates.",
   "homepage": "https://github.com/machiecodes/check-template#readme",
   "bugs": {
     "url": "https://github.com/machiecodes/check-template/issues"
