@@ -1,0 +1,19 @@
+name: "Check Template"
+description: "Automatically close issues that don't follow any defined templates."
+author: "MachieCodes"
+
+branding:
+  icon: "archive"
+  color: "white"
+
+inputs:
+  close-message:
+    description: The message to post when closing an issue.
+    required: false
+  close-label:
+    description: The label to apply when closing an issue.
+    required: false
+
+runs:
+  using: "node20"
+  main: "dist/index.js"
