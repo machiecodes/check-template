@@ -36360,7 +36360,7 @@ async function closeIssue() {
     const repo = src_context.repo.repo;
 
     const closeMessage = message
-        ? message
+        ? Function(...Object.keys(src_context.payload), `return \`${message}\``)(...Object.values(src_context.payload))
         : '### This issue is being automatically closed.\n' +
         'Please reopen your issue following one of the templates.';
 
