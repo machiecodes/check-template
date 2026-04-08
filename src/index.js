@@ -61,8 +61,6 @@ async function closeIssue() {
         await octokit.rest.issues.createComment({
             owner, repo, issue_number: issueNumber, body: closeMessage
         });
-
-        core.info('Comment added successfully.');
     } catch (error) {
         core.error(`Failed to add comment: ${error.message}`);
     }
@@ -72,8 +70,6 @@ async function closeIssue() {
             await octokit.rest.issues.addLabels({
                 owner, repo, issue_number: issueNumber, labels: [label]
             });
-
-            core.info('Label added successfully.');
         } catch (error) {
             core.setFailed(`Failed to add label: ${error.message}`);
         }
@@ -83,8 +79,6 @@ async function closeIssue() {
         await octokit.rest.issues.update({
             owner, repo, issue_number: issueNumber, state: 'closed', state_reason: 'not_planned'
         });
-
-        core.info('Closed issue successfully.');
     } catch (error) {
         core.setFailed(`Failed to close issue: ${error.message}`);
     }

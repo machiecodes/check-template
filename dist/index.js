@@ -36217,7 +36217,7 @@ function notice(message, properties = {}) {
  * @param message info message
  */
 function info(message) {
-    process.stdout.write(message + external_os_namespaceObject.EOL);
+    process.stdout.write(message + os.EOL);
 }
 /**
  * Begin an output group.
@@ -36368,8 +36368,6 @@ async function closeIssue() {
         await octokit.rest.issues.createComment({
             owner, repo, issue_number: issueNumber, body: closeMessage
         });
-
-        info('Comment added successfully.');
     } catch (error) {
         core_error(`Failed to add comment: ${error.message}`);
     }
@@ -36379,8 +36377,6 @@ async function closeIssue() {
             await octokit.rest.issues.addLabels({
                 owner, repo, issue_number: issueNumber, labels: [label]
             });
-
-            info('Label added successfully.');
         } catch (error) {
             setFailed(`Failed to add label: ${error.message}`);
         }
@@ -36390,8 +36386,6 @@ async function closeIssue() {
         await octokit.rest.issues.update({
             owner, repo, issue_number: issueNumber, state: 'closed', state_reason: 'not_planned'
         });
-
-        info('Closed issue successfully.');
     } catch (error) {
         setFailed(`Failed to close issue: ${error.message}`);
     }
